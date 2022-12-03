@@ -1,6 +1,6 @@
 [[bin]]
 name = "AdventOfCode"
-path = "src/day_2/main.rs"
+path = "src/day_3/main.rs"
 
 [package]
 name = "AdventOfCode"
