@@ -55,5 +55,5 @@ fn main() {
 
     // Gib die Summen aus (Part 1 & Part 2)
     println!("Count of assignments which fully contains the other: {}", sum_of_ranges.0);
-    println!("Count of assignments which overlap at all. {}", sum_of_ranges.1);
+    println!("Count of assignments which overlap at all: {}", sum_of_ranges.1);
 }
