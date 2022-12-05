@@ -50,7 +50,7 @@ fn part2(input: &str) -> i32 {
     return sum;
 }
 
-fn main() {
+pub fn main() {
     // Lese die input.txt Datei ein
     let input = include_str!("input.txt");
 

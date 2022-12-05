@@ -26,7 +26,7 @@ fn check_if_range_overlap_at_all(range1: &Range<u32>, range2: &Range<u32>) -> bo
     return false;
 }
 
-fn main() {
+pub fn main() {
     // Lese die input.txt Datei ein
     let input = include_str!("input.txt");
 

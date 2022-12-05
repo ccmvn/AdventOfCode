@@ -17,7 +17,7 @@ fn get_round_points(a: char, b: char) -> (i32, i32) {
     }
 }
 
-fn main() {
+pub fn main() {
     // Lese die input.txt Datei ein
     let input = include_str!("input.txt");
 
