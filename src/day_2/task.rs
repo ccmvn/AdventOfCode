@@ -31,6 +31,17 @@ pub fn main() {
     }
 
     // Gebe die Punkte von Part 1 und Part 2 aus
-    println!("Part 1: {:?}", rounds.iter().map(|x| x.0).sum::<i32>());
-    println!("Part 2: {:?}", rounds.iter().map(|x| x.1).sum::<i32>());
+    for i in 1..3 {
+        // Erstelle eine Variable für die Punkte
+        let mut points = 0;
+
+        // Gehe jede Runde durch
+        for round in rounds.iter() {
+            // Addiere die Punkte der Runde zur Gesamtpunktzahl
+            points += if i == 1 { round.0 } else { round.1 };
+        }
+
+        // Gebe die Punkte aus
+        println!("Part {}: {}", i, points);
+    }
 }
