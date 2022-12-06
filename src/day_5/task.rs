@@ -13,7 +13,7 @@ type Stack = Vec<char>;
 
 // Funktion zum parsen der Eingabe
 fn parse_stacks(input: &str) -> Vec<Vec<char>> {
-    // Erstelle ein Regex Objekt um die Zeilen zu parsen [A-Z]
+    // Regex Objekt erstellen
     let re = Regex::new("((\\[[A-Z]])|( {3})) ?").unwrap();
 
     // Erstelle einen multi-dimensionalen Vector
