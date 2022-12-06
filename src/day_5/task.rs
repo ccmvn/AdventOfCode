@@ -85,7 +85,7 @@ pub fn main() {
     let input = include_str!("input.txt");
 
     // Parse die Stacks
-    let mut stacks: Vec<Vec<char>> = parse_stacks(input);
+    let stacks: Vec<Vec<char>> = parse_stacks(input);
 
     // Regex Objekt erstellen
     let re = Regex::new(r"move (\d+) from (\d+) to (\d+)").unwrap();
