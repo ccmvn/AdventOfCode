@@ -40,7 +40,7 @@ pub fn main() {
     // Ermittle die Gesamtgröße der Verzeichnisse aus (unter 100000)
     let mut total_size = 0;
     for (_, size) in directory.iter() {
-        if *size <= 100000 {
+        if *size <= 100_000 {
             total_size += size;
         }
     }
@@ -49,10 +49,10 @@ pub fn main() {
     println!("Total size of these directories: {}", total_size);
 
     // Größe des Filesystems
-    let filesystem_size = 70000000;
+    let filesystem_size = 70_000_000;
     // Benötigter Speicher
-    let size_needed = 30000000;
-    // Ungenutzeter Speicher
+    let size_needed = 30_000_000;
+    // Ungenutzter Speicher
     let unused_size = filesystem_size - directory.get(&vec!["/".to_string()]).unwrap();
     // Größe die benötigt wird um genügend Speicher zu haben
     let size_to_delete = size_needed - unused_size;
