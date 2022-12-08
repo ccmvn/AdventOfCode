@@ -13,6 +13,7 @@ fn is_tree_visible(x: usize, y: usize, grid: &Vec<Vec<char>>) -> bool {
     return false;
 }
 
+// Funktion um die Punkte zu ermitteln
 fn get_scenic_score(grid: &Vec<Vec<char>>) -> usize {
     // Anzahl der Punkte
     let mut scenic_score = 0;
