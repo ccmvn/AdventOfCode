@@ -15,7 +15,7 @@ fn main() {
         6 => day_6::task::main(),
         7 => day_7::task::main(),
         8 => day_8::task::main(),
-        9 => day_8::task::main(),
+        9 => day_9::task::main(),
         // 10 => day_10::task::main(),
         // 11 => day_11::task::main(),
         // 12 => day_12::task::main(),
