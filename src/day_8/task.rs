@@ -1,28 +1,32 @@
-// Funktion zum überprüfen ob der Baum sichtbar ist
-fn is_tree_visible(x: usize, y: usize, grid: &Vec<Vec<char>>) -> bool {
-    // Prüfen, ob der Baum von links oder rechts sichtbar ist
-    if grid.iter().take(y).all(|row| row[x] < grid[y][x]) || grid.iter().skip(y + 1).all(|row| row[x] < grid[y][x]) {
-        return true;
+// Funktion um die sichtbaren Bäume zu ermitteln
+fn get_visible_trees(grid: &Vec<Vec<char>>) -> usize {
+    // Anzahl der sichtbaren Bäume
+    let mut visible_trees = 0;
+
+    // Gehe das Grid durch
+    for y in 0..grid.len() {
+        for x in 0..grid[y].len() {
+
+            // Prüfen, ob der Baum von links, rechts, oben oder unten sichtbar ist
+            if grid.iter().take(y).all(|row| row[x] < grid[y][x]) || grid.iter().skip(y + 1).all(|row| row[x] < grid[y][x])
+                || grid[y].iter().take(x).all(|&tree| tree < grid[y][x]) || grid[y].iter().skip(x + 1).all(|&tree| tree < grid[y][x]) {
+                // Wenn ja, erhöhe die Anzahl der sichtbaren Bäume
+                visible_trees += 1;
+            }
+        }
     }
 
-    // Prüfen, ob der Baum von oben oder unten sichtbar ist
-    if grid[y].iter().take(x).all(|&tree| tree < grid[y][x]) || grid[y].iter().skip(x + 1).all(|&tree| tree < grid[y][x]) {
-        return true;
-    }
-
-    return false;
+    return visible_trees;
 }
 
 // Funktion um die Punkte zu ermitteln
 fn get_scenic_score(grid: &Vec<Vec<char>>) -> usize {
     // Anzahl der Punkte
     let mut scenic_score = 0;
-    // Gridlänge
-    let grid_length = grid.len() - 1;
 
     // Gehe das Grid durch
-    for y in 1..grid_length {
-        for x in 1..grid_length {
+    for y in 1..grid.len() - 1 {
+        for x in 1..grid.len() - 1 {
             let value = &grid[y][x];
             let row = &grid[y];
             let col = grid.iter().map(|row| row[x]).collect::<Vec<char>>();
@@ -55,21 +59,8 @@ pub fn main() {
         grid.push(line.chars().collect());
     }
 
-    // Anzahl der sichtbaren Bäume
-    let mut visible_map = 0;
-
-    // Gehe das Grid durch
-    for y in 0..grid.len() {
-        for x in 0..grid[y].len() {
-            // Überprüfe ob der Baum sichtbar ist
-            if is_tree_visible(x, y, &grid) {
-                visible_map += 1;
-            }
-        }
-    }
-
     // Gebe die Anzahl der sichtbaren Bäume aus
-    println!("Number of visible map: {}", visible_map);
+    println!("Number of visible trees: {}", get_visible_trees(&grid));
     // Gebe die höchsten Punkte aus
     println!("Highest score: {}", get_scenic_score(&grid));
 }
