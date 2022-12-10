@@ -7,15 +7,15 @@ fn main() {
     // Führe Day Funktion des jeweiligen Tages aus
     // Der Tag wird durch die lokale Zeit bestimmt
     match Local::now().day() {
-        1 => day_1::task::main(),
-        2 => day_2::task::main(),
-        3 => day_3::task::main(),
-        4 => day_4::task::main(),
-        5 => day_5::task::main(),
-        6 => day_6::task::main(),
-        7 => day_7::task::main(),
-        8 => day_8::task::main(),
-        9 => day_9::task::main(),
+        1 => day_01::task::main(),
+        2 => day_02::task::main(),
+        3 => day_03::task::main(),
+        4 => day_04::task::main(),
+        5 => day_05::task::main(),
+        6 => day_06::task::main(),
+        7 => day_07::task::main(),
+        8 => day_08::task::main(),
+        9 => day_09::task::main(),
         10 => day_10::task::main(),
         // 11 => day_11::task::main(),
         // 12 => day_12::task::main(),
@@ -36,39 +36,39 @@ fn main() {
     }
 }
 
-mod day_1 {
+mod day_01 {
     pub mod task;
 }
 
-mod day_2 {
+mod day_02 {
     pub mod task;
 }
 
-mod day_3 {
+mod day_03 {
     pub mod task;
 }
 
-mod day_4 {
+mod day_04 {
     pub mod task;
 }
 
-mod day_5 {
+mod day_05 {
     pub mod task;
 }
 
-mod day_6 {
+mod day_06 {
     pub mod task;
 }
 
-mod day_7 {
+mod day_07 {
     pub mod task;
 }
 
-mod day_8 {
+mod day_08 {
     pub mod task;
 }
 
-mod day_9 {
+mod day_09 {
     pub mod task;
 }
 
