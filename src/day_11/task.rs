@@ -100,6 +100,7 @@ pub fn main() {
     // Lese die input.txt Datei ein
     let input = include_str!("input.txt");
 
+    // Führe eine Simulation mit 20 und 10.000 Runden aus
     for num_rounds in vec![20, 10_000] {
         let mut m = parse_input(input);
         let (mo, mut bags) = setup_simulation(&m);
