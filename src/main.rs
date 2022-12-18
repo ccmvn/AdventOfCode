@@ -1,7 +1,6 @@
 // Meine Lösungen für den Advent of Code 2022. https://adventofcode.com/2022
 
 #![allow(non_snake_case)]
-
 use chrono::prelude::*;
 
 fn main() {
