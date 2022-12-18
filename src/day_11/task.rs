@@ -100,13 +100,10 @@ pub fn main() {
     // Lese die input.txt Datei ein
     let input = include_str!("input.txt");
 
-    let mut m1 = parse_input(input);
-    let (mo, mut bags) = setup_simulation(&m1);
-    simulate_round(&mut m1, &mut bags, mo, 0..20, true);
-    println!("The level of monkey business after 20 rounds: {}", get_simulation_result(&m1));
-
-    let mut m2 = parse_input(input);
-    let (mo, mut bags) = setup_simulation(&m2);
-    simulate_round(&mut m2, &mut bags, mo, 0..10_000, false);
-    println!("The level of monkey business after 10000 rounds: {}", get_simulation_result(&m2));
+    for num_rounds in vec![20, 10_000] {
+        let mut m = parse_input(input);
+        let (mo, mut bags) = setup_simulation(&m);
+        simulate_round(&mut m, &mut bags, mo, 0..num_rounds, num_rounds == 20);
+        println!("The level of monkey business after {} rounds: {}", num_rounds, get_simulation_result(&m));
+    }
 }
