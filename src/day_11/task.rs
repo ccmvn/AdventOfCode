@@ -54,6 +54,7 @@ fn parse_input(input: &str) -> Vec<Monkey> {
         .collect()
 }
 
+// Funktion zum erstellen der Simulation
 fn setup_simulation(m: &Vec<Monkey>) -> (usize, Vec<Vec<usize>>) {
     let mo = m.iter().map(|m| m.divisible).product();
     let bags = vec![vec![]; m.len()];
