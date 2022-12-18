@@ -9,13 +9,13 @@ enum OperationType {
 
 // Struktur für eine Operation
 struct Operation {
-    op: OperationType,
+    operation: OperationType,
 }
 
 // Struktur für einen Affen
 struct Monkey {
     bag: Vec<usize>,
-    op: Operation,
+    operation: Operation,
     divisible: usize,
     trueTarget: usize,
     falseTarget: usize,
@@ -34,17 +34,17 @@ fn parse_input(input: &str) -> Vec<Monkey> {
 
             // Operation aus Element 3 in Operationstruktur umwandeln
             let operation = match op[2] {
-                "old" => Operation { op: OperationType::Square },
+                "old" => Operation { operation: OperationType::Square },
                 b => match (op[1], b.parse::<usize>().unwrap()) {
-                    ("+", n) => Operation { op: OperationType::Add(n) },
-                    ("*", n) => Operation { op: OperationType::Multiply(n) },
+                    ("+", n) => Operation { operation: OperationType::Add(n) },
+                    ("*", n) => Operation { operation: OperationType::Multiply(n) },
                     _ => unreachable!(),
                 },
             };
             // Struktur erstellen
             Monkey {
                 bag: l[1].split(", ").map(|n| n.parse().unwrap()).collect(),
-                op: operation,
+                operation: operation,
                 divisible: l[3].rsplit_once(' ').unwrap().1.parse().unwrap(),
                 trueTarget: l[4].rsplit_once(' ').unwrap().1.parse().unwrap(),
                 falseTarget: l[5].rsplit_once(' ').unwrap().1.parse().unwrap(),
@@ -71,7 +71,7 @@ fn simulate_round(m: &mut Vec<Monkey>, bags: &mut Vec<Vec<usize>>, mo: usize, ro
             m.bag.append(&mut bags[i]);
             m.bag.drain(0..).for_each(|mut n| {
                 // Führe die Operation aus
-                n = match m.op.op {
+                n = match m.operation.operation {
                     OperationType::Square => n * n,
                     OperationType::Add(x) => n + x,
                     OperationType::Multiply(x) => n * x,
