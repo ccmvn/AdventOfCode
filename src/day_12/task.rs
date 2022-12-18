@@ -1,3 +1,5 @@
+use pathfinding::prelude::bfs;
+
 // Diese Funktion erstellt eine Karte aus einem Eingabestring
 fn get_map(input: &str) -> Vec<u8> {
     input.bytes()
@@ -46,7 +48,7 @@ fn get_adjacent_cells(x: usize, y: usize, w: usize, h: usize) -> Vec<(usize, usi
 fn print_results(w: usize, h: usize, start: usize, end: usize, map: Vec<u8>) {
     let mut path_length;
 
-    path_length = pathfinding::directed::bfs::bfs(
+    path_length = bfs(
         &(end % w, end / w), // Beginne mit der Endposition
         |(x, y)| {
             let cur = map[y * w + x]; // Ermittle den Wert
@@ -65,7 +67,7 @@ fn print_results(w: usize, h: usize, start: usize, end: usize, map: Vec<u8>) {
     path_length = map.iter()
         .enumerate()
         .filter(|(_, b)| **b == 0) // Filter alle Positionen mit Wert 0
-        .filter_map(|(start, _)| pathfinding::directed::bfs::bfs(
+        .filter_map(|(start, _)| bfs(
             &(start % w, start / w), // Beginne mit der Startposition
             |(x, y)| {
                 let cur = map[y * w + x];
