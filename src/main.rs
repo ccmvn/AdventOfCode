@@ -1,6 +1,7 @@
 // Meine Lösungen für den Advent of Code 2022. https://adventofcode.com/2022
 
 #![allow(non_snake_case)]
+#![feature(array_windows)]
 use chrono::prelude::*;
 
 fn main() {
@@ -20,7 +21,7 @@ fn main() {
         11 => day_11::task::main(),
         12 => day_12::task::main(),
         13 => day_13::task::main(),
-        // 14 => day_14::task::main(),
+        14 => day_14::task::main(),
         // 15 => day_15::task::main(),
         // 16 => day_16::task::main(),
         // 17 => day_17::task::main(),
@@ -88,9 +89,9 @@ mod day_13 {
     pub mod task;
 }
 
-// mod day_14 {
-//     pub mod task;
-// }
+mod day_14 {
+    pub mod task;
+}
 
 // mod day_15 {
 //     pub mod task;
