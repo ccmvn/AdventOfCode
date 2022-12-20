@@ -69,7 +69,7 @@ fn is_solution(point: (i32, i32), sensors: &[Sensor]) -> bool {
     return true;
 }
 
-fn set_part(line_num: i32, sensors: &[Sensor], part: bool) {
+fn set_part(number: i32, sensors: &[Sensor], part: bool) {
     if part {
         let (x_bounds, y_bounds) = calculate_bounds(sensors); // Berechne die Grenzen für die Punkte, die von den Sensoren abgedeckt werden
         let width = x_bounds.0.abs_diff(x_bounds.1); // Berechne die Breite der Fläche, die von den Sensoren abgedeckt wird
@@ -77,13 +77,13 @@ fn set_part(line_num: i32, sensors: &[Sensor], part: bool) {
         let mut line = vec![true; width as usize]; // Erstelle eine Liste mit der Breite der Fläche, die von den Sensoren abgedeckt wird
         let mut num_no_beacon = 0; // Die Anzahl der Punkte, die von den Sensoren abgedeckt werden
 
-        if line_num >= y_bounds.0 && line_num <= y_bounds.1 { // Wenn die angegebene Zeile innerhalb der Grenzen liegt
+        if number >= y_bounds.0 && number <= y_bounds.1 { // Wenn die angegebene Zeile innerhalb der Grenzen liegt
             for sensor in sensors { // Iteriere über alle Sensoren
                 let mut current_x = x_bounds.0; // Der aktuelle x-Wert
 
                 for pos in &mut line { // Iteriere über alle Positionen in der Zeile
                     if *pos { // Wenn die Position noch nicht abgedeckt wurde
-                        let distance = (sensor.sensor_pos.0 - current_x).abs() + (sensor.sensor_pos.1 - line_num).abs(); // Berechne die Distanz zwischen dem Punkt und dem Sensor
+                        let distance = (sensor.sensor_pos.0 - current_x).abs() + (sensor.sensor_pos.1 - number).abs(); // Berechne die Distanz zwischen dem Punkt und dem Sensor
                         if distance <= sensor.sensor_radius as i32 { // Wenn der Punkt innerhalb der Abdeckung des Sensors liegt
                             *pos = false; // Markiere die Position als abgedeckt
                         }
@@ -94,7 +94,7 @@ fn set_part(line_num: i32, sensors: &[Sensor], part: bool) {
             }
 
             for sensor in sensors { // Iteriere über alle Sensoren
-                if sensor.nearest_beacon_pos.1 == line_num { // Wenn der Beacon in der angegebenen Zeile liegt
+                if sensor.nearest_beacon_pos.1 == number { // Wenn der Beacon in der angegebenen Zeile liegt
                     line[(sensor.nearest_beacon_pos.0 - x_bounds.0) as usize] = true; // Markiere die Position des Beacons als nicht abgedeckt
                 }
             }
@@ -110,13 +110,13 @@ fn set_part(line_num: i32, sensors: &[Sensor], part: bool) {
         for sensor in sensors { // Iteriere über alle Sensoren
             let mut y = sensor.sensor_pos.1 - sensor.sensor_radius as i32 - 1; // Der aktuelle y-Wert
             for x in sensor.sensor_pos.0..=(sensor.sensor_pos.0 + sensor.sensor_radius as i32 + 1) {
-                if is_solution((x, y), sensors) && x > 0 && y > 0 && x < line_num && y < line_num {
+                if is_solution((x, y), sensors) && x > 0 && y > 0 && x < number && y < number {
                     found_solution = (x, y); // Speichere die Position der Lösung
                     break;
                 }
                 y -= 1; // Verringere den y-Wert um 1
 
-                if is_solution((x, y), sensors) && x > 0 && y > 0 && x < line_num && y < line_num {
+                if is_solution((x, y), sensors) && x > 0 && y > 0 && x < number && y < number {
                     found_solution = (x, y); // Speichere die Position der Lösung
                     break;
                 }
@@ -125,13 +125,13 @@ fn set_part(line_num: i32, sensors: &[Sensor], part: bool) {
 
             let mut y = sensor.sensor_pos.1;
             for x in (sensor.sensor_pos.0 - sensor.sensor_radius as i32 - 1)..=sensor.sensor_pos.0 {
-                if is_solution((x, y), sensors) && x > 0 && y > 0 && x < line_num && y < line_num {
+                if is_solution((x, y), sensors) && x > 0 && y > 0 && x < number && y < number {
                     found_solution = (x, y); // Speichere die Position der Lösung
                     break;
                 }
                 y += 1; // Erhöhe den y-Wert um 1
 
-                if is_solution((x, y), sensors) && x > 0 && y > 0 && x < line_num && y < line_num {
+                if is_solution((x, y), sensors) && x > 0 && y > 0 && x < number && y < number {
                     found_solution = (x, y); // Speichere die Position der Lösung
                     break;
                 }
@@ -144,7 +144,7 @@ fn set_part(line_num: i32, sensors: &[Sensor], part: bool) {
 }
 
 pub fn main() {
-    let line_num = [2000000, 4000000];
+    let numbers = [2000000, 4000000];
 
     // Lese die input.txt Datei
     let input = include_str!("input.txt");
@@ -153,6 +153,6 @@ pub fn main() {
 
     // Gebe die Lösung für Part 1 und Part 2 aus
     for i in 0..2 {
-        set_part(line_num[i], &sensors, i == 0);
+        set_part(numbers[i], &sensors, i == 0);
     }
 }
