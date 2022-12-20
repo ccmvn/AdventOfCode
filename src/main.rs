@@ -22,7 +22,7 @@ fn main() {
         12 => day_12::task::main(),
         13 => day_13::task::main(),
         14 => day_14::task::main(),
-        // 15 => day_15::task::main(),
+        15 => day_15::task::main(),
         // 16 => day_16::task::main(),
         // 17 => day_17::task::main(),
         // 18 => day_18::task::main(),
@@ -93,9 +93,9 @@ mod day_14 {
     pub mod task;
 }
 
-// mod day_15 {
-//     pub mod task;
-// }
+mod day_15 {
+    pub mod task;
+}
 
 // mod day_16 {
 //     pub mod task;

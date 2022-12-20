@@ -7,7 +7,7 @@ fn get_priority(c: char) -> i32 {
     }
 }
 
-fn set_part(part: i32, input: &str) -> i32 {
+fn set_part(input: &str, part: i32) -> i32 {
     // Summe der Prioritäten
     let mut sum = 0;
 
@@ -51,6 +51,6 @@ pub fn main() {
 
     // Gebe die Summe der Prioritäten aus (Part 1 & Part 2)
     for i in 1..3 {
-        println!("Part {}: {}", i, set_part(i, input));
+        println!("Part {}: {}", i, set_part(input, i));
     }
 }
