@@ -81,7 +81,7 @@ fn get_pressure(rocks: &Vec<Rock>, wind: &Vec<char>, num: i128, part: bool) {
 
         loop {
             if let Some(answer) = check_cache(&mut cache, &cavern, rocks, i, wind, wi) {
-                println!("Unit of rocks be after {} rocks have stopped: {}", num, answer);
+                println!("Unit of rocks be after {} rocks have stopped falling: {}", num, answer);
                 break;
             }
 
